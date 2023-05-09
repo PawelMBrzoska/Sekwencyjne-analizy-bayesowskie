@@ -1,0 +1,1 @@
+# Sekwencyjne-analizy-bayesowskie
