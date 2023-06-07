@@ -9,8 +9,8 @@ SD <- 10  # SD
 
 }
 
-N <- 100 # Liczba osób
-d <- 0.30  # Cohen's d effect size
+N <- 420 # Liczba osób
+d <- 0.20  # Cohen's d effect size
 
 # Generowanie danych i zrobienie testu
 {mean_diff <- d * sd
@@ -27,22 +27,20 @@ cat("BF10 = ", bf,
     "\nBF01 = ", 1/bf)
 }
 
-
-
-library(haven)
-write_sav(data, "Dane1.sav")
-
 #######################################
 #     Jak to wygląda w praktyce       #
 #######################################
 
+#install.packages("haven")
+library(haven)
 
-data <- read_sav("Dane3.sav")
+data <- read_sav("Dane1.sav")
 
 {
-  ttest <- ttestBF(x = data$dependent_variable[data$group == 0], y = data$dependent_variable[data$group == 1])
-  bf <- extractBF(ttest)$bf # extract BF
+  ttest <- ttestBF(x = data$dependent_variable[data$group == 1], y = data$dependent_variable[data$group == 2])
+  bf <- extractBF(ttest)$bf
+  cat("N = ", nrow(data),
+      "\nBF10 = ", bf,
+      "\nBF01 = ", 1/bf)
 }
-print(ttest)
-cat("BF10 = ", bf,
-    "\nBF01 = ", 1/bf)
+  
