@@ -15,7 +15,7 @@ d <- 0.20  # Cohen's d effect size
 # Generowanie danych i zrobienie testu
 {mean_diff <- d * sd
   data <- data.frame(
-    participant_id = 1:N,  # Participant IDs
+    participant_id = 1:N,
     group = sample(c(1, 2), N, replace = TRUE),
     dependent_variable = NA
   )
