@@ -13,14 +13,14 @@ N <- 420 # Liczba osób
 d <- 0.20  # Cohen's d effect size
 
 # Generowanie danych i zrobienie testu
-{mean_diff <- d * sd
+{mean_diff <- d * SD
   data <- data.frame(
-    participant_id = 1:N,
+    participant_id = 1:N,  # Participant IDs
     group = sample(c(1, 2), N, replace = TRUE),
     dependent_variable = NA
   )
-data$dependent_variable[data$group == 1] <- rnorm(sum(data$group == 1), mu, sd)
-data$dependent_variable[data$group == 2] <- rnorm(sum(data$group == 2), mu - mean_diff, sd)
+data$dependent_variable[data$group == 1] <- rnorm(sum(data$group == 1), M, SD)
+data$dependent_variable[data$group == 2] <- rnorm(sum(data$group == 2), M - mean_diff, SD)
 ttest <- ttestBF(x = data$dependent_variable[data$group == 1], y = data$dependent_variable[data$group == 2])
 bf <- extractBF(ttest)$bf
 cat("BF10 = ", bf,
